@@ -471,7 +471,7 @@ const Insurance = () => {
                 Close
               </button>
               <button
-                onClick={() => handleGetPlan(plan)}
+                onClick={() => window.open("https://ashuminajclaim.streamlit.app/", "_blank")}
                 className="flex-1 bg-blue-800 text-white py-2 rounded-md hover:bg-blue-900 transition-colors"
               >
                 Buy Now
@@ -513,7 +513,7 @@ const Insurance = () => {
               </button>
               <button
                 className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
-                onClick={handleBuyNow}
+                onClick={() => window.open("https://ashuminajclaim.streamlit.app/", "_blank")}
               >
                 Buy Now
               </button>

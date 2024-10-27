@@ -1,6 +1,19 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FaUser, FaCar, FaClipboard, FaTools, FaShieldAlt, FaCog, FaSignOutAlt, FaHome, FaInfoCircle, FaSearch } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import {
+  FaUser,
+  FaCar,
+  FaClipboard,
+  FaTools,
+  FaShieldAlt,
+  FaCog,
+  FaSignOutAlt,
+  FaHome,
+  FaInfoCircle,
+  FaSearch,
+  FaExclamationTriangle, // Importing icon for Fraud Detector
+} from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +24,8 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const navigate = useNavigate();
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
@@ -48,67 +63,113 @@ const Navbar = () => {
                 {/* Home Link */}
                 <Link
                   to="/"
-                  className={`flex items-center px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive("/")}`}
+                  className={`flex items-center px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive(
+                    "/"
+                  )}`}
                   aria-label="Home"
                   onClick={() => setIsOpen(false)} // Close menu on click
                 >
                   <FaHome className="mr-2 group-hover:scale-110 transition-transform duration-300" />
-                  <span className="relative">Home<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span></span>
+                  <span className="relative">
+                    Home
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+                  </span>
                 </Link>
 
                 {/* Car Details Link */}
                 <Link
                   to="/page/car-details"
-                  className={`flex items-center px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive("/page/car-details")}`}
+                  className={`flex items-center px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive(
+                    "/page/car-details"
+                  )}`}
                   aria-label="Car Details"
                   onClick={() => setIsOpen(false)} // Close menu on click
                 >
                   <FaInfoCircle className="mr-2 group-hover:scale-110 transition-transform duration-300" />
-                  <span className="relative">Car Details<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span></span>
+                  <span className="relative">
+                    Car Details
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+                  </span>
                 </Link>
 
                 {/* Inspector Link */}
                 <Link
                   to="/page/inspector"
-                  className={`flex items-center px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive("/page/inspector")}`}
+                  className={`flex items-center px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive(
+                    "/page/inspector"
+                  )}`}
                   aria-label="Inspector"
                   onClick={() => setIsOpen(false)} // Close menu on click
                 >
                   <FaSearch className="mr-2 group-hover:scale-110 transition-transform duration-300" />
-                  <span className="relative">Inspector<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span></span>
+                  <span className="relative">
+                    Inspector
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+                  </span>
                 </Link>
 
                 {/* Claim Link */}
                 <Link
                   to="/page/claim"
-                  className={`flex items-center px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive("/page/claim")}`}
+                  className={`flex items-center px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive(
+                    "/page/claim"
+                  )}`}
                   aria-label="Claim"
                   onClick={() => setIsOpen(false)} // Close menu on click
                 >
                   <FaClipboard className="mr-2 group-hover:scale-110 transition-transform duration-300" />
-                  <span className="relative">Claim<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span></span>
+                  <span className="relative">
+                    Claim
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+                  </span>
                 </Link>
 
                 {/* Repair Link */}
                 <Link
                   to="/page/repair"
-                  className={`flex items-center px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive("/page/repair")}`}
+                  className={`flex items-center px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive(
+                    "/page/repair"
+                  )}`}
                   aria-label="Repair"
                   onClick={() => setIsOpen(false)} // Close menu on click
                 >
                   <FaTools className="mr-2 group-hover:scale-110 transition-transform duration-300" />
-                  <span className="relative">Repair<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span></span>
+                  <span className="relative">
+                    Repair
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+                  </span>
                 </Link>
 
                 {/* Insurance Link */}
                 <Link
                   to="/page/insurance"
-                  className={`flex items-center px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive("/page/insurance")}`}
+                  className={`flex items-center px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive(
+                    "/page/insurance"
+                  )}`}
                   aria-label="Insurance"
                   onClick={() => setIsOpen(false)} // Close menu on click
                 >
                   <FaShieldAlt className="mr-2 group-hover:scale-110 transition-transform duration-300" />
-                  <span className="relative">Insurance<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span></span>
+                  <span className="relative">
+                    Insurance
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+                  </span>
+                </Link>
+
+                {/* Fraud Detector Link */}
+                <Link
+                  to="/page/fraud-detector" // Update this path based on your routing
+                  className={`flex items-center px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive(
+                    "/page/fraud-detector"
+                  )}`}
+                  aria-label="Fraud Detector"
+                  onClick={() => setIsOpen(false)} // Close menu on click
+                >
+                  <FaExclamationTriangle className="mr-2 group-hover:scale-110 transition-transform duration-300" />
+                  <span className="relative">
+                    Fraud Detector
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+                  </span>
                 </Link>
               </div>
             </div>
@@ -117,30 +178,14 @@ const Navbar = () => {
           {/* Profile Dropdown */}
           <div className="hidden md:block">
             <div className="ml-4 flex items-center md:ml-6 relative">
-              <button
-                onClick={toggleDropdown}
+              <Link
+                to="/profile"
                 className="p-2 rounded-full text-gray-600 hover:text-blue-600 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300"
                 aria-label="User profile"
+                onClick={() => setIsOpen(false)} // Close menu on click
               >
                 <FaUser className="h-6 w-6" />
-              </button>
-              {showDropdown && (
-                <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
-                  <Link
-                    to="#"
-                    className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    onClick={() => setShowDropdown(false)} // Close dropdown on click
-                  >
-                    <FaCog className="mr-2" /> Settings
-                  </Link>
-                  <button
-                    onClick={handleSignOut}
-                    className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    <FaSignOutAlt className="mr-2" /> Sign out
-                  </button>
-                </div>
-              )}
+              </Link>
             </div>
           </div>
 
@@ -169,8 +214,7 @@ const Navbar = () => {
               </svg>
               <svg
                 className={`${isOpen ? "block" : "hidden"} h-6 w-6`}
-                xmlns="http://www.w3.org/200
-                              .org/2000/svg"
+                xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -193,7 +237,9 @@ const Navbar = () => {
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <Link
             to="/"
-            className={`flex items-center px-3 py-2 rounded-md text-base font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive("/")}`}
+            className={`flex items-center px-3 py-2 rounded-md text-base font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive(
+              "/"
+            )}`}
             onClick={toggleMenu}
           >
             <FaHome className="mr-2 group-hover:scale-110 transition-transform duration-300" />
@@ -201,7 +247,9 @@ const Navbar = () => {
           </Link>
           <Link
             to="/page/car-details"
-            className={`flex items-center px-3 py-2 rounded-md text-base font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive("/page/car-details")}`}
+            className={`flex items-center px-3 py-2 rounded-md text-base font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive(
+              "/page/car-details"
+            )}`}
             onClick={toggleMenu}
           >
             <FaInfoCircle className="mr-2 group-hover:scale-110 transition-transform duration-300" />
@@ -209,7 +257,9 @@ const Navbar = () => {
           </Link>
           <Link
             to="/page/inspector"
-            className={`flex items-center px-3 py-2 rounded-md text-base font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive("/page/inspector")}`}
+            className={`flex items-center px-3 py-2 rounded-md text-base font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive(
+              "/page/inspector"
+            )}`}
             onClick={toggleMenu}
           >
             <FaSearch className="mr-2 group-hover:scale-110 transition-transform duration-300" />
@@ -217,7 +267,9 @@ const Navbar = () => {
           </Link>
           <Link
             to="/page/claim"
-            className={`flex items-center px-3 py-2 rounded-md text-base font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive("/page/claim")}`}
+            className={`flex items-center px-3 py-2 rounded-md text-base font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive(
+              "/page/claim"
+            )}`}
             onClick={toggleMenu}
           >
             <FaClipboard className="mr-2 group-hover:scale-110 transition-transform duration-300" />
@@ -225,7 +277,9 @@ const Navbar = () => {
           </Link>
           <Link
             to="/page/repair"
-            className={`flex items-center px-3 py-2 rounded-md text-base font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive("/page/repair")}`}
+            className={`flex items-center px-3 py-2 rounded-md text-base font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive(
+              "/page/repair"
+            )}`}
             onClick={toggleMenu}
           >
             <FaTools className="mr-2 group-hover:scale-110 transition-transform duration-300" />
@@ -233,11 +287,24 @@ const Navbar = () => {
           </Link>
           <Link
             to="/page/insurance"
-            className={`flex items-center px-3 py-2 rounded-md text-base font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive("/page/insurance")}`}
+            className={`flex items-center px-3 py-2 rounded-md text-base font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive(
+              "/page/insurance"
+            )}`}
             onClick={toggleMenu}
           >
             <FaShieldAlt className="mr-2 group-hover:scale-110 transition-transform duration-300" />
             Insurance
+          </Link>
+          {/* Fraud Detector Link in Mobile Menu */}
+          <Link
+            to="/page/fraud-detector" // Update this path based on your routing
+            className={`flex items-center px-3 py-2 rounded-md text-base font-medium hover:bg-gray-50 transition-all duration-300 group ${isActive(
+              "/page/fraud-detector"
+            )}`}
+            onClick={toggleMenu}
+          >
+            <FaExclamationTriangle className="mr-2 group-hover:scale-110 transition-transform duration-300" />
+            Fraud Detector
           </Link>
         </div>
       </div>

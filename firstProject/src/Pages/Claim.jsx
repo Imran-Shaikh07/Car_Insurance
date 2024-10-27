@@ -5,7 +5,7 @@ const Claim = () => {
 
   const handleCallClick = () => {
     try {
-      window.location.href = "https://cardamage.streamlit.app/";
+      window.location.href = "https://yolocardamage.streamlit.app/";
     } catch (error) {
       setShowError(true);
       setTimeout(() => setShowError(false), 3000);
@@ -42,15 +42,21 @@ const Claim = () => {
           <p className="text-xl text-gray-200">Protecting your journey with comprehensive coverage and quick claims</p>
         </div>
 
-        <div className="mt-16 text-center">
+        <div className="mt-16 text-center " >
         <button
                   onClick={handleCallClick}
                   className="px-12 py-4 bg-blue-600 text-white rounded-full text-lg font-semibold hover:bg-blue-700 transform transition-all duration-200 hover:scale-105 shadow-lg"
                   aria-label="Click to call inspector"
                 >
-                  <FaPhone className="mr-2" />
-                  Get Start
+                  
+                  Damage Detector
                 </button>
+                <button
+                className="px-12 py-4  bg-blue-600 text-white m-10 rounded-full text-lg font-semibold hover:bg-blue-700 transform transition-all duration-200 hover:scale-105 shadow-lg"
+                onClick={() => window.open("https://universe.roboflow.com/sammy/damaged-vehicle-images/model/3?webcam=true", "_blank")}
+                >
+                  Live Detection
+                  </button>
         </div>
       </div>
     </div>

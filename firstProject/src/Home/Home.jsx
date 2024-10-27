@@ -3,7 +3,16 @@
 import React, { useState } from "react";
 import Chatbot from "../components/Chatbot";
 import Footer from "../components/footer";
-import { FaQuestionCircle, FaPhone, FaComments, FaTrophy, FaCheck, FaTimes, FaRobot, FaPaperPlane } from "react-icons/fa";
+import {
+  FaQuestionCircle,
+  FaPhone,
+  FaComments,
+  FaTrophy,
+  FaCheck,
+  FaTimes,
+  FaRobot,
+  FaPaperPlane,
+} from "react-icons/fa";
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -14,7 +23,7 @@ const Home = () => {
     vehicleMake: "",
     vehicleModel: "",
     incidentDescription: "",
-    documents: null
+    documents: null,
   });
 
   const [step, setStep] = useState(1);
@@ -24,36 +33,63 @@ const Home = () => {
   const [currentMessage, setCurrentMessage] = useState("");
 
   const testimonials = [
-    { id: 1, name: "John Smith", comment: "Quick and hassle-free claims process. Highly recommended!", rating: 5 },
-    { id: 2, name: "Sarah Johnson", comment: "Excellent service and prompt response to my claim.", rating: 5 },
-    { id: 3, name: "Michael Brown", comment: "Professional handling of my claim from start to finish.", rating: 5 }
+    {
+      id: 1,
+      name: "John Smith",
+      comment: "Quick and hassle-free claims process. Highly recommended!",
+      rating: 5,
+    },
+    {
+      id: 2,
+      name: "Sarah Johnson",
+      comment: "Excellent service and prompt response to my claim.",
+      rating: 5,
+    },
+    {
+      id: 3,
+      name: "Michael Brown",
+      comment: "Professional handling of my claim from start to finish.",
+      rating: 5,
+    },
   ];
 
   const faqs = [
-    { question: "How long does the claims process take?", answer: "Most claims are processed within 48-72 hours of submission." },
-    { question: "What documents do I need to submit?", answer: "You'll need your policy document, incident photos, and police report if applicable." },
-    { question: "How will I receive my settlement?", answer: "Settlements are typically processed via direct bank transfer or check." }
+    {
+      question: "How long does the claims process take?",
+      answer: "Most claims are processed within 48-72 hours of submission.",
+    },
+    {
+      question: "What documents do I need to submit?",
+      answer:
+        "You'll need your policy document, incident photos, and police report if applicable.",
+    },
+    {
+      question: "How will I receive my settlement?",
+      answer:
+        "Settlements are typically processed via direct bank transfer or check.",
+    },
   ];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleFileChange = (e) => {
     setFormData((prev) => ({
       ...prev,
-      documents: e.target.files[0]
+      documents: e.target.files[0],
     }));
   };
 
   const validateForm = () => {
     const newErrors = {};
     if (!formData.name) newErrors.name = "Name is required";
-    if (!formData.policyNumber) newErrors.policyNumber = "Policy number is required";
+    if (!formData.policyNumber)
+      newErrors.policyNumber = "Policy number is required";
     if (!formData.email || !/^\S+@\S+\.\S+$/.test(formData.email)) {
       newErrors.email = "Valid email is required";
     }
@@ -77,10 +113,13 @@ const Home = () => {
       setMessages([...messages, { text: currentMessage, isUser: true }]);
       // Simulate bot response
       setTimeout(() => {
-        setMessages(prev => [...prev, {
-          text: "Thank you for your query. Our AI assistant is processing your request. A customer service representative will get back to you shortly.",
-          isUser: false
-        }]);
+        setMessages((prev) => [
+          ...prev,
+          {
+            text: "Thank you for your query. Our AI assistant is processing your request. A customer service representative will get back to you shortly.",
+            isUser: false,
+          },
+        ]);
       }, 1000);
       setCurrentMessage("");
     }
@@ -92,50 +131,19 @@ const Home = () => {
       <div
         className="relative h-[500px] bg-cover bg-center"
         style={{
-          backgroundImage: "url('https://www.autonomousvehicleinternational.com/wp-content/uploads/2024/03/AdobeStock_650988463-scaled.jpeg')"
+          backgroundImage:
+            "url('https://www.autonomousvehicleinternational.com/wp-content/uploads/2024/03/AdobeStock_650988463-scaled.jpeg')",
         }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-50">
           <div className="container mx-auto px-4 h-full flex items-center">
             <div className="text-white max-w-2xl">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">File Your Car Insurance Claim</h1>
-              <p className="text-xl mb-8">Quick, easy, and hassle-free claims process</p>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-
-      
-
-      {/* Assistance Section */}
-      <div className="bg-gray-100 py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {faqs.map((faq, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                <FaQuestionCircle className="text-blue-600 text-2xl mb-4" />
-                <h3 className="font-bold mb-2">{faq.question}</h3>
-                <p className="text-gray-600">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <h3 className="text-xl font-bold mb-4">Need Additional Help?</h3>
-            <div className="flex justify-center space-x-6">
-              <div className="flex items-center">
-                <FaPhone className="text-blue-600 mr-2" />
-                <span>1-800-INSURANCE</span>
-              </div>
-              <button
-                onClick={() => setIsChatOpen(true)}
-                className="flex items-center text-blue-600 hover:text-blue-700 transition duration-300"
-              >
-                <FaComments className="mr-2" />
-                <span>Ask Query</span>
-              </button>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+                File Your Car Insurance Claim
+              </h1>
+              <p className="text-xl mb-8">
+                Quick, easy, and hassle-free claims process
+              </p>
             </div>
           </div>
         </div>
@@ -144,7 +152,9 @@ const Home = () => {
       {/* Testimonials Section */}
       <div className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">What Our Customers Say</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">
+            What Our Customers Say
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial) => (
               <div
@@ -186,13 +196,16 @@ const Home = () => {
             {messages.map((message, index) => (
               <div
                 key={index}
-                className={`mb-4 ${message.isUser ? "text-right" : "text-left"}`}
+                className={`mb-4 ${
+                  message.isUser ? "text-right" : "text-left"
+                }`}
               >
                 <div
-                  className={`inline-block p-3 rounded-lg ${message.isUser
-                    ? "bg-blue-600 text-white"
-                    : "bg-gray-200 text-gray-800"
-                    }`}
+                  className={`inline-block p-3 rounded-lg ${
+                    message.isUser
+                      ? "bg-blue-600 text-white"
+                      : "bg-gray-200 text-gray-800"
+                  }`}
                 >
                   {message.text}
                 </div>
